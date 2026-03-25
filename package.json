@@ -27,12 +27,12 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/unistack/unistack.git"
+    "url": "https://github.com/anonyme-afk/UniStack.git"
   },
   "bugs": {
-    "url": "https://github.com/unistack/unistack/issues"
+    "url": "https://github.com/anonyme-afk/UniStack/issues"
   },
-  "homepage": "https://github.com/unistack/unistack#readme",
+  "homepage": "https://github.com/anonyme-afk/UniStack#readme",
   "main": "./dist/cli.js",
   "types": "./dist/index.d.ts",
   "bin": {
