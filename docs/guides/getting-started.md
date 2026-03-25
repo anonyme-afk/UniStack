@@ -1,4 +1,4 @@
-# 🚀 Getting Started with UniStack
+#  Getting Started with UniStack
 
 **english:** UniStack is a hybrid full-stack language that lets you write Python, JavaScript, HTML/CSS, and SQL all in one file. This guide gets you started in 5 minutes.
 
