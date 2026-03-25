@@ -1,0 +1,29 @@
+
+{
+  "name": "unistack",
+  "displayName": "UniStack Language",
+  "description": "Syntax highlighting for UniStack (.uni)",
+  "version": "0.0.1",
+  "publisher": "unistack",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "unistack",
+        "aliases": ["UniStack", "unistack"],
+        "extensions": [".uni"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "unistack",
+        "scopeName": "source.unistack",
+        "path": "./syntaxes/unistack.tmLanguage.json"
+      }
+    ]
+  }
+}

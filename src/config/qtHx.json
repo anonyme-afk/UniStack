@@ -1,0 +1,57 @@
+# EditorConfig / Configuration d'Édition
+# english: Ensures consistent code style across all editors
+# french: Garantit un style de code cohérent dans tous les éditeurs
+# See https://editorconfig.org for more information
+
+root = true
+
+# All files / Tous les fichiers
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# TypeScript files / Fichiers TypeScript
+[*.{ts,tsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# JavaScript files / Fichiers JavaScript
+[*.{js,jsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# JSON files / Fichiers JSON
+[*.json]
+indent_style = space
+indent_size = 2
+
+# Markdown files / Fichiers Markdown
+[*.md]
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = false
+
+# YAML files / Fichiers YAML
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Shell scripts / Scripts shell
+[*.{sh,bash}]
+indent_style = space
+indent_size = 2
+
+# Makefile / Fichier Make
+[Makefile]
+indent_style = tab
+
+# UniStack files / Fichiers UniStack
+[*.uni]
+indent_style = space
+indent_size = 2
+charset = utf-8
+end_of_line = lf

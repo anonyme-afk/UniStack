@@ -1,0 +1,31 @@
+openapi: 3.0.0
+info:
+  title: UniStack Application API
+  version: 0.1.0
+  description: |
+    **english:** auto-generated HTTP endpoints for a UniStack app.
+    **french:** points de terminaison HTTP générés pour une application UniStack.
+paths:
+  /api/users:
+    get:
+      summary: Retrieve list of users
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+  /api/todo:
+    post:
+      summary: Create todo item
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '201':
+          description: Created

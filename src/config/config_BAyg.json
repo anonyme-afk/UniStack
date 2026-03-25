@@ -1,0 +1,8 @@
+{
+{"$schema": "./unistack.schema.json",
+  "entry": "src/examples/beauty-site.uni",
+  "outDir": "dist",
+  "generatedDir": "generated",
+  "serverEntry": "generated/app.server.ts",
+  "clientEntry": "generated/app.client.ts"
+}

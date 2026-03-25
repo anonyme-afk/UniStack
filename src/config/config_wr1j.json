@@ -1,0 +1,59 @@
+{
+  "// english": "VS Code settings for UniStack development",
+  "// french": "Paramètres VS Code pour le développement UniStack",
+
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": false,
+  "editor.rulers": [100],
+  "editor.wordWrap": "on",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.trimAutoWhitespace": true,
+
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.tabSize": 2
+  },
+
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  "files.exclude": {
+    "node_modules": true,
+    "dist": false,
+    "generated": false,
+    ".git": true
+  },
+
+  "search.exclude": {
+    "node_modules": true,
+    "dist": false,
+    "coverage": true
+  },
+
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.format.enable": false,
+
+  "python.linting.enabled": false,
+  "python.formatting.enabled": false,
+
+  "// english": "End of UniStack VS Code configuration",
+  "// french": "Fin de la configuration VS Code UniStack"
+}

@@ -1,0 +1,21 @@
+unistack app "Chat" version 1.0 {
+  py-logic:
+    clients = []
+    def chatHandler(ws, req):
+      clients.append(ws)
+      try:
+        while True:
+          msg = ws.recv()
+          for c in clients:
+            if c is not ws: c.send(msg)
+      except:
+        clients.remove(ws)
+
+  ws-routes:
+    WS /chat py:chatHandler;
+
+  html-ui:
+    <div id="chat"></div>;
+  js-events:
+    // client implementation omitted
+}

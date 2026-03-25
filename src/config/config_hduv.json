@@ -1,0 +1,77 @@
+{
+  "name": "unistack-toolchain",
+  "version": "0.1.0",
+  "private": false,
+  "description": "MVP UniStack DSL compiler and runtime (JS/HTML/CSS/Python/SQL fusion) for hybrid full-stack apps.",
+  "keywords": [
+    "dsl",
+    "domain-specific-language",
+    "fullstack",
+    "full-stack",
+    "transpiler",
+    "compiler",
+    "python",
+    "javascript",
+    "html",
+    "css",
+    "sql",
+    "hybrid",
+    "web-framework",
+    "express",
+    "typescript"
+  ],
+  "author": {
+    "name": "anonyme-afk",
+    "url": "https://github.com/unistack/unistack"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unistack/unistack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unistack/unistack/issues"
+  },
+  "homepage": "https://github.com/unistack/unistack#readme",
+  "main": "dist/cli.js",
+  "bin": {
+    "unistack": "dist/cli.js"
+  },
+  "scripts": {
+    "antlr": "antlr4ts -visitor -no-listener -o src/parser/generated src/lang/UniStack.g4 && node scripts/patch-antlr-imports.js",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "prebuild": "npm run clean",
+    "dev": "node dist/cli.js dev",
+    "lsp": "node dist/lsp/server.js",
+    "lsp:debug": "NODE_DEBUG=lsp node dist/lsp/server.js",
+    "fmt": "node dist/cli.js fmt",
+    "lint": "node dist/cli.js lint",
+    "unistack": "node dist/cli.js",
+    "test": "node --loader ts-node/esm src/tests/parser.test.ts",
+    "test:integration": "node --loader ts-node/esm src/tests/integration.test.ts",
+    "test:all": "npm run test && npm run test:integration",
+    "debug": "node debug.js",
+    "perf": "node dist/runtime/monitor.js",
+    "verify": "node verify.js",
+    "status": "node status.js",
+    "clean": "node clean.js",
+    "prebuild": "npm run clean",
+    "predev": "npm run build"
+  },
+  "type": "module",
+  "dependencies": {
+    "antlr4ts": "^0.5.0-alpha.4",
+    "antlr4ts-cli": "^0.5.0-alpha.4",
+    "esbuild": "^0.24.0",
+    "express": "^4.21.2",
+    "sql.js": "^1.10.3",
+    "vscode-languageserver": "^9.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.0"
+  }
+}

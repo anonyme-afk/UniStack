@@ -1,0 +1,7 @@
+src/
+generated/
+examples/
+.github/
+*.test.ts
+*.test.js
+tsconfig.json

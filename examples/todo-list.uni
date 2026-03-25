@@ -1,0 +1,40 @@
+unistack app "TodoList" version 1.0 {
+  config: port=3000;
+  
+  state: 
+    tasks = [];
+  <h1>Todo List</h1>
+<form onsubmit="addTask">
+  <input type="text" name="task" placeholder="New task" required />
+  <button type="submit">Add</button>
+</form>
+<ul>
+  {#each tasks as task}
+    <li>{task} <button onclick="removeTask(tasks.indexOf(task))">Remove</button></li>
+  {/each}
+</ul>
+          ;
+  
+  py-logic:
+    def addTask(task):
+      tasks.append(task)
+      return tasks
+    
+    def removeTask(index):
+      if 0 <= index < len(tasks):
+        tasks.pop(index)
+      return tasks
+  
+  routes:
+    GET / {
+      return html
+    }
+    
+    POST /add {
+      return status 200
+    }
+    
+    POST /remove/:index {
+      return status 200
+    }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "unistack-toolchain",
+  "version": "0.1.0",
+  "private": false,
+  "description": "MVP UniStack DSL compiler and runtime (JS/HTML/CSS/Python/SQL fusion) for hybrid full-stack apps.",
+  "keywords": [
+    "dsl",
+    "domain-specific-language",
+    "fullstack",
+    "full-stack",
+    "transpiler",
+    "compiler",
+    "python",
+    "javascript",
+    "html",
+    "css",
+    "sql",
+    "hybrid",
+    "web-framework",
+    "express",
+    "typescript"
+  ],
+  "author": {
+    "name": "anonyme-afk",
+    "url": "https://github.com/unistack/unistack"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unistack/unistack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/unistack/unistack/issues"
+  },
+  "homepage": "https://github.com/unistack/unistack#readme",
+  "main": "dist/cli.js",
+  "bin": {
+    "unistack": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node dist/cli.js dev",
+    "unistack": "node dist/cli.js",
+    "test": "node --loader ts-node/esm src/tests/parser.test.ts",
+    "verify": "node verify.js",
+    "clean": "node clean.js",
+    "prebuild": "npm run clean",
+    "predev": "npm run build",
+    "lint": "echo \"no linter configured yet\""
+  },
+  "type": "module",
+  "dependencies": {
+    "esbuild": "^0.24.0",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.10.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.0"
+  }
+}

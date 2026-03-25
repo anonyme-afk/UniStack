@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "UniStack configuration",
+  "type": "object",
+  "properties": {
+    "entry": { "type": "string" },
+    "outDir": { "type": "string" },
+    "generatedDir": { "type": "string" },
+    "serverEntry": { "type": "string" },
+    "clientEntry": { "type": "string" }
+  },
+  "required": ["entry", "outDir", "generatedDir", "serverEntry", "clientEntry"],
+  "additionalProperties": false
+}
+

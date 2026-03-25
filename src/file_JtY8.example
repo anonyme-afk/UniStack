@@ -1,0 +1,12 @@
+# Environment variables for UniStack projects
+# english: copy this file to .env and customize
+# french: copiez ce fichier en .env et personnalisez
+
+# PORT the server will listen on
+PORT=3000
+
+# NODE_ENV=development or production
+NODE_ENV=development
+
+# DATABASE_URL connection string (Phase 2 SQL support)
+DATABASE_URL=sqlite:memory

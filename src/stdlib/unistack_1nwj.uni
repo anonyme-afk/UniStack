@@ -1,0 +1,52 @@
+unistack app "Blog" version 1.0 {
+  db:
+    table users { id: integer primary autoincrement; name: string required; pass: string required; }
+    table posts { id: integer primary autoincrement; user_id: integer; title: string required; content: text required; image: string; }
+
+  env:
+    JWT_SECRET:string:required;
+
+  py-logic:
+    import jwt, os
+    SECRET = env:JWT_SECRET
+    def register(name, passw):
+      return sql("INSERT INTO users (name, pass) VALUES (?, ?)", name, passw)
+    def login(name, passw):
+      row = sql("SELECT id FROM users WHERE name = ? AND pass = ?", name, passw)
+      if not row: return {error:'bad'}
+      token = jwt.encode({id: row[0].id}, SECRET, algorithm='HS256')
+      return {token: token}
+    def verify_jwt(token):
+      try:
+        return jwt.decode(token, SECRET, algorithms=['HS256'])
+      except:
+        return None
+    def create_post(u_id, title, content):
+      return sql("INSERT INTO posts (user_id,title,content) VALUES (?,?,?)", u_id, title, content)
+    def save_image(file):
+      mime = file['mimetype']
+      if not mime.startswith('image/'): return {error:'not image'}
+      path = os.path.join('uploads', file['filename'])
+      with open(path,'wb') as f: f.write(file['buffer'])
+      return path
+
+  middleware:
+    auth handler py:verify_jwt excludes "/login", "/register";
+
+  routes:
+    POST /api/register { return py:register(name, passw); }
+    POST /api/login { return py:login(name, passw); }
+    GET /api/posts { return sql("SELECT * FROM posts"); }
+    POST /api/posts {
+      file field="image" accept="image/*";
+      validate title:string:required, content:string:required;
+      const img = await py:save_image(file);
+      return py:create_post(py:verify_jwt(req.headers.authorization).get('id'), title, content);
+    }
+
+  html-ui:
+    <div id="app"></div>;
+
+  js-events:
+    // omitted for brevity
+}

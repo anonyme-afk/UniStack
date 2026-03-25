@@ -1,0 +1,19 @@
+# Makefile for UniStack project
+# english: common tasks for development
+# french: tâches courantes pour le développement
+
+.PHONY: all build test dev clean
+
+all: build test
+
+build:
+	npm run build
+
+test:
+	npm run test
+
+dev:
+	npm run dev
+
+clean:
+	rm -rf dist generated node_modules

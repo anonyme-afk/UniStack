@@ -1,0 +1,45 @@
+# english: Build artifacts and dependencies
+# french:  Artefacts de build et dépendances
+node_modules
+dist
+generated
+pnpm-debug.log*
+
+# english: Environment and configuration
+# french:  Environnement et configuration
+.env
+.env.local
+.env.*.local
+
+# english: Logs
+# french:  Journaux
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# english: OS files
+# french:  Fichiers OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# english: IDE files
+# french:  Fichiers IDE
+.vscode/
+.idea/
+*.iml
+*.sublime-workspace
+
+# english: Testing
+# french:  Tests
+coverage/
+.nyc_output/
+src/tests/tmp/
+
+# english: Temporary files
+# french:  Fichiers temporaires
+*.tmp
+*.temp
