@@ -223,7 +223,7 @@ MVP development.)
 
 ## New Features / Nouvelles Fonctionnalités
 
-### 1. Built-in Design System ✨
+### 1. Built-in Design System [Sparkle]
 
 Every UniStack app automatically includes a modern, responsive CSS design system with:
 - **Component classes** (buttons, cards, alerts, forms, tables)
@@ -259,7 +259,7 @@ Features:
 - Static CRUD operations (create, update, delete)
 - Type-safe interface
 
-### 3. WebAssembly Performance Optimization ⚡
+### 3. WebAssembly Performance Optimization [Lightning]
 
 Mark CPU-intensive functions with `@wasm` for automatic native compilation:
 

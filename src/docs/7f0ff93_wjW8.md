@@ -4,7 +4,7 @@ This document distinguishes between what UniStack provides out of the box and wh
 
 ## Automatic protections
 
-* **SQL parameterization** – the transpiler scans each `sql("...")` used in routes; concatenated strings trigger a build-time error (`❌ UniStack: SQL injection risk`).
+* **SQL parameterization** – the transpiler scans each `sql("...")` used in routes; concatenated strings trigger a build-time error (`[Cross] UniStack: SQL injection risk`).
 * **Rate limiting in production** – if `NODE_ENV=production` and no `middleware` section is provided, a default limiter of 1000 requests per 15 minutes is applied automatically.
 * **Helmet headers** – when running in production, the server enables `helmet()` on every app, even if the developer did not configure middleware.
 * **Stack trace suppression** – error handlers only return error messages; full stack traces are never sent in HTTP responses.

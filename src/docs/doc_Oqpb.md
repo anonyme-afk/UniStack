@@ -338,7 +338,7 @@ npx unistack dev       # Démarrer le serveur dev
 
 ## Test Results / Résultats des Tests
 
-**Status: All 17 tests PASSING ✓**
+**Status: All 17 tests PASSING [Check]**
 
 ```
 english: parser inline route test passed | french: test inline route du parser réussi
@@ -393,25 +393,25 @@ english: transpiler build test passed | french: test build transpileur réussi
 
 UniStack is a **Domain-Specific Language** for building hybrid full-stack applications by fusing JavaScript, HTML/CSS, Python, and SQL into a single unified syntax. The legacy prototype (v0.1.0) includes:
 
-- ✓ Complete DSL parser and transpiler
-- ✓ HTTP routing and Express.js integration
-- ✓ Client/server code generation
-- ✓ Comprehensive documentation (1068 lines)
-- ✓ Test coverage for core parser and build flow
-- ✓ Bilingual support (English/French)
-- ✓ Production-ready infrastructure
-- ✓ Open-source Apache 2.0 license
+- [Check] Complete DSL parser and transpiler
+- [Check] HTTP routing and Express.js integration
+- [Check] Client/server code generation
+- [Check] Comprehensive documentation (1068 lines)
+- [Check] Test coverage for core parser and build flow
+- [Check] Bilingual support (English/French)
+- [Check] Production-ready infrastructure
+- [Check] Open-source Apache 2.0 license
 
 UniStack est un **Langage Spécifique au Domaine** pour créer des applications full-stack hybrides en fusionnant JavaScript, HTML/CSS, Python et SQL dans une syntaxe unifiée. Le legacy prototype (v0.1.0) inclut :
 
-- ✓ Parser DSL et transpileur complets
-- ✓ Routage HTTP et intégration Express.js
-- ✓ Génération de code client/serveur
-- ✓ Documentation complète (1068 lignes)
-- ✓ Couverture de test complète
-- ✓ Support bilingue (Anglais/Français)
-- ✓ Infrastructure prête pour la production
-- ✓ Licence Apache 2.0 open-source
+- [Check] Parser DSL et transpileur complets
+- [Check] Routage HTTP et intégration Express.js
+- [Check] Génération de code client/serveur
+- [Check] Documentation complète (1068 lignes)
+- [Check] Couverture de test complète
+- [Check] Support bilingue (Anglais/Français)
+- [Check] Infrastructure prête pour la production
+- [Check] Licence Apache 2.0 open-source
 
 ---
 

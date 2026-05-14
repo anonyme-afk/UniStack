@@ -40,7 +40,7 @@ import { dirname, resolve as resolvePath } from 'node:path';
 import fetch from 'node-fetch';
 
 function uniError(filename: string, line: number, col: number, message: string, suggestion?: string): Error {
-  let formatted = `❌ UniStack Error — ${basename(filename)} line ${line}\n`;
+  let formatted = `[Cross] UniStack Error — ${basename(filename)} line ${line}\n`;
   formatted += `   Problème: ${message}\n`;
   if (suggestion) {
     formatted += `   Suggestion: ${suggestion}\n`;
@@ -123,15 +123,15 @@ function validateEnvVars(vars: CompilationIR['backend']['env'] | undefined): voi
     const name = v.name;
     const val = process.env[name];
     if ((val === undefined || val === null || val === '') && v.required) {
-      throw new Error(`❌ UniStack: missing required env var: ${name}`);
+      throw new Error(`[Cross] UniStack: missing required env var: ${name}`);
     }
     if (v.type === 'number' && val && isNaN(Number(val))) {
-      throw new Error(`❌ UniStack: env var ${name} must be a number`);
+      throw new Error(`[Cross] UniStack: env var ${name} must be a number`);
     }
     if (v.type === 'boolean' && val) {
       const low = String(val).toLowerCase();
       if (low !== 'true' && low !== 'false') {
-        throw new Error(`❌ UniStack: env var ${name} must be boolean`);
+        throw new Error(`[Cross] UniStack: env var ${name} must be boolean`);
       }
     }
   }
@@ -609,14 +609,14 @@ async function cmdTest(cwd: string, parserMode?: string) {
           }
         }
       } catch (e) {
-        console.error(`❌ Test failed: "${testCase.name}"\n   Step failed: ${step.kind === 'assert' ? step.expression : `${step.method} ${step.path}`}\n   Reason: ${(e as Error).message}`);
+        console.error(`[Cross] Test failed: "${testCase.name}"\n   Step failed: ${step.kind === 'assert' ? step.expression : `${step.method} ${step.path}`}\n   Reason: ${(e as Error).message}`);
         testFailed = true;
         failed++;
       }
     }
 
     if (!testFailed) {
-      console.log(`✅ Test passed: "${testCase.name}"`);
+      console.log(`[OK] Test passed: "${testCase.name}"`);
       passed++;
     }
   }

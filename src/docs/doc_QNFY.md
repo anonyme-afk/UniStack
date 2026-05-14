@@ -42,7 +42,7 @@ french:  Exemple d’utilisation HTML pour une favicon :
    - `npx unistack dev` – build then start a development server on `localhost:3000`.
    - `npm run test` – run simple parser tests (requires `ts-node` installed as a dev dependency).
 
-> ⚠️ In this MVP stage the CLI is a simple wrapper around the TypeScript
+> [Warning]️ In this MVP stage the CLI is a simple wrapper around the TypeScript
 > functions in `src/cli.ts`.
 
 ## Language Basics / Bases du langage

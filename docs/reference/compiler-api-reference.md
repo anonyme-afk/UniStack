@@ -675,10 +675,10 @@ describe('UniStack Transpiler', () => {
 ## Version Roadmap
 
 ### v0.1.0 (Current - MVP)
-- ✅ Hand-written parser
-- ✅ Basic transpiler
-- ✅ Express server
-- ✅ HTML/CSS/JS/Python/SQL synthesis
+- [OK] Hand-written parser
+- [OK] Basic transpiler
+- [OK] Express server
+- [OK] HTML/CSS/JS/Python/SQL synthesis
 
 ### v0.2.0 (Q2 2026)
 - [ ] ANTLR parser integration

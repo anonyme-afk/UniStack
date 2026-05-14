@@ -1,4 +1,4 @@
-# 🚀 UniStack — Guide Maître Complet
+# [Rocket] UniStack — Guide Maître Complet
 ### "Zéro point négatif. Un vrai langage. Une vraie v1.0."
 > Document de référence unique — tout ce qu'il faut faire, étape par étape.
 
@@ -15,7 +15,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ## 💥 LES 5 DOULEURS À ÉLIMINER (une par langage)
 
-### ❌ JavaScript → ✅ UniStack le règle ainsi
+### [Cross] JavaScript → [OK] UniStack le règle ainsi
 **Problèmes JS :**
 - `undefined is not a function` → erreur incompréhensible
 - Pas de types par défaut → bugs silencieux
@@ -31,7 +31,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ❌ Python → ✅ UniStack le règle ainsi
+### [Cross] Python → [OK] UniStack le règle ainsi
 **Problèmes Python :**
 - L'indentation qui casse tout silencieusement
 - Conflits `venv` / `pip` → *"ça marche sur ma machine"*
@@ -46,14 +46,14 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ❌ HTML → ✅ UniStack le règle ainsi
+### [Cross] HTML → [OK] UniStack le règle ainsi
 **Problèmes HTML :**
 - Répétition massive (pas de composants natifs)
 - Balises mal fermées silencieuses
 - Zéro logique dans le markup
 - Copier-coller partout pour réutiliser un bout d'UI
 
-**Ce que UniStack fait déjà ✅ :**
+**Ce que UniStack fait déjà [OK] :**
 - `components:` → composants réutilisables avec props
 - `{render:PostCard("Hello", userName)}` → logique dans le markup
 - Validation du HTML à la compilation → erreurs immédiates
@@ -64,7 +64,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ❌ CSS → ✅ UniStack le règle ainsi
+### [Cross] CSS → [OK] UniStack le règle ainsi
 **Problèmes CSS :**
 - Cascade imprévisible → un style en écrase un autre sans raison
 - Scope global → `.button` dans un composant affecte tous les boutons
@@ -79,7 +79,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ❌ SQL → ✅ UniStack le règle ainsi
+### [Cross] SQL → [OK] UniStack le règle ainsi
 **Problèmes SQL :**
 - Injections SQL → faille de sécurité #1 depuis 30 ans
 - Migrations manuelles → synchroniser la DB avec le code est un cauchemar
@@ -99,7 +99,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 | # | Critique potentielle | Comment l'éliminer | Phase |
 |---|---|---|---|
 | 1 | *"C'est juste TypeScript déguisé"* | Montrer ce que TypeScript + Express ne peut PAS faire en 10 lignes que UniStack fait | F2 (démo) |
-| 2 | *"Le Python est lent / plante"* | Pool de workers + timeout strict + message d'erreur clair | Phase A ✅ |
+| 2 | *"Le Python est lent / plante"* | Pool de workers + timeout strict + message d'erreur clair | Phase A [OK] |
 | 3 | *"Pas de vrais composants, c'est du string replace"* | Composants dynamiques côté serveur + slots | Phase C/D |
 | 4 | *"Le CSS scope ne marche pas vraiment"* | CSS scopé auto avec hash unique par composant | Phase C |
 | 5 | *"SQL injection possible"* | Paramétrage forcé — impossible de faire `sql("... " + userInput)` sans warning | Phase A + F1 |
@@ -115,7 +115,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ✅ PHASE A — Déjà faite
+### [OK] PHASE A — Déjà faite
 - [x] SQL exécuté réellement (SQLite via sql.js + persistance)
 - [x] Python exécuté réellement via subprocess
 - [x] Pool workers Python + timeouts
@@ -124,7 +124,7 @@ Si un reviewer dit *"je n'aurais jamais pu faire ça aussi vite en JS/Python/HTM
 
 ---
 
-### ✅ PHASE B — Déjà faite
+### [OK] PHASE B — Déjà faite
 - [x] Section `state:` réactive (window.UniState)
 - [x] Bindings DOM : `data-uni-bind`, `data-uni-model`, `data-uni-show`, `data-uni-class`
 - [x] Section `components:` avec `{render:PostCard(...)}`

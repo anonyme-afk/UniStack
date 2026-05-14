@@ -57,9 +57,9 @@ for (const [section, files] of Object.entries(sections)) {
   for (const file of files) {
     try {
       await fs.stat(resolve(file));
-      console.log(`  ✓ ${file}`);
+      console.log(`  [Check] ${file}`);
     } catch {
-      console.log(`  ✗ ${file}`);
+      console.log(`  [X Mark] ${file}`);
       sectionGood = false;
       allGood = false;
     }
@@ -71,29 +71,29 @@ for (const [section, files] of Object.entries(sections)) {
 
 // Check test results
 console.log('\n\nTest Results:');
-console.log('  ✓ Parser inline route test');
-console.log('  ✓ Header comment test');
-console.log('  ✓ Config parsing test');
-console.log('  ✓ Transpiler build test');
-console.log('  ✓ Imports build test');
+console.log('  [Check] Parser inline route test');
+console.log('  [Check] Header comment test');
+console.log('  [Check] Config parsing test');
+console.log('  [Check] Transpiler build test');
+console.log('  [Check] Imports build test');
 console.log('  └─ All 5 tests passing');
 
 // Build status
 console.log('\n\nBuild Status:');
-console.log('  ✓ TypeScript compilation');
-console.log('  ✓ dist/ directory created');
-console.log('  ✓ generated/ directory created');
-console.log('  ✓ All artifacts generated');
+console.log('  [Check] TypeScript compilation');
+console.log('  [Check] dist/ directory created');
+console.log('  [Check] generated/ directory created');
+console.log('  [Check] All artifacts generated');
 
 // Project readiness
 console.log('\n\nProject Readiness:');
-console.log('  ✓ Full bilingual support (EN/FR)');
-console.log('  ✓ Apache 2.0 license with headers');
-console.log('  ✓ Comprehensive documentation');
-console.log('  ✓ CI/CD pipeline configured');
-console.log('  ✓ Docker containerization ready');
-console.log('  ✓ Pre-commit hooks available');
-console.log('  ✓ Cross-platform compatibility');
+console.log('  [Check] Full bilingual support (EN/FR)');
+console.log('  [Check] Apache 2.0 license with headers');
+console.log('  [Check] Comprehensive documentation');
+console.log('  [Check] CI/CD pipeline configured');
+console.log('  [Check] Docker containerization ready');
+console.log('  [Check] Pre-commit hooks available');
+console.log('  [Check] Cross-platform compatibility');
 
 console.log('\n\nNext Steps:');
 console.log('  1. npm run verify           Verify setup');
@@ -108,7 +108,7 @@ console.log('  → See INSTALL.md for detailed setup');
 console.log('  → See QUICK_REFERENCE.md for syntax');
 console.log('  → See GUIDE_COMPLET.md for deep dive');
 
-console.log('\n' + (allGood ? '✓ PROJECT READY FOR PRODUCTION' : '✗ Some files missing'));
+console.log('\n' + (allGood ? '[Check] PROJECT READY FOR PRODUCTION' : '[X Mark] Some files missing'));
 console.log('═══════════════════════════════════════════════════════════\n');
 
 process.exit(allGood ? 0 : 1);

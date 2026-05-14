@@ -1,4 +1,4 @@
-# 🚀 Getting Started with UniStack
+# [Rocket] Getting Started with UniStack
 
 **english:** UniStack is a hybrid full-stack language that lets you write Python, JavaScript, HTML/CSS, and SQL all in one file. This guide gets you started in 5 minutes.
 
@@ -22,7 +22,7 @@ npm install
 npm run verify
 ```
 
-If you see "✓ All checks passed!", you're ready! Otherwise, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
+If you see "[Check] All checks passed!", you're ready! Otherwise, see [TROUBLESHOOTING.md](TROUBLESHOOTING.md).
 
 ---
 
@@ -73,11 +73,11 @@ Open `http://localhost:3000` in your browser. Done!
 ## What You Just Created
 
 Your app automatically gets:
-- ✓ Frontend: HTML rendered with Python data
-- ✓ Backend: HTTP routes that call Python functions
-- ✓ Styling: CSS embedded in one place
-- ✓ Interactivity: JavaScript event handlers
-- ✓ Full bundled package ready to deploy
+- [Check] Frontend: HTML rendered with Python data
+- [Check] Backend: HTTP routes that call Python functions
+- [Check] Styling: CSS embedded in one place
+- [Check] Interactivity: JavaScript event handlers
+- [Check] Full bundled package ready to deploy
 
 ---
 

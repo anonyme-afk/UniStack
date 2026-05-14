@@ -674,7 +674,7 @@ unistack app "TodoApp" version 1.0 {
       list.innerHTML = todos.map(todo => `
         <li class="${todo.done ? 'done' : ''}">
           ${todo.text}
-          <span class="delete-btn" onclick="deleteTodo(${todo.id})">✕</span>
+          <span class="delete-btn" onclick="deleteTodo(${todo.id})">[Multiply]</span>
         </li>
       `).join('');
     }
@@ -851,13 +851,13 @@ Your route syntax has a typo or extra whitespace.
 
 **Solution / Solution:**
 
-❌ **Mauvais / Wrong:**
+[Cross] **Mauvais / Wrong:**
 ```text
 routes
   GET /foo { return py:foo; }
 ```
 
-✅ **Correct:**
+[OK] **Correct:**
 ```text
 routes:
   GET /foo { return py:foo; }
@@ -879,13 +879,13 @@ Votre syntaxe de route a une faute de frappe ou un espace supplémentaire.
 
 **Solution / Solution:**
 
-❌ **Mauvais / Wrong:**
+[Cross] **Mauvais / Wrong:**
 ```text
 routes
   GET /foo { return py:foo; }
 ```
 
-✅ **Correct:**
+[OK] **Correct:**
 ```text
 routes:
   GET /foo { return py:foo; }
@@ -979,7 +979,7 @@ The routes section isn't being parsed. Common reasons:
 2. There's a colon after `routes`
 3. You're in the right `.uni` file
 
-❌ **Wrong:**
+[Cross] **Wrong:**
 ```text
 unistack app "Test" version 1.0 {
 routes:
@@ -987,7 +987,7 @@ GET /foo { return py:foo; }
 }
 ```
 
-✅ **Correct:**
+[OK] **Correct:**
 ```text
 unistack app "Test" version 1.0 {
   routes:
@@ -1089,13 +1089,13 @@ css:
 
 **Common CSS mistakes:**
 
-❌ **Wrong:**
+[Cross] **Wrong:**
 ```css
 #app { }         /* CSS for #app but HTML has class="app" */
 .container { }   /* No matching elements in HTML */
 ```
 
-✅ **Correct:**
+[OK] **Correct:**
 ```css
 .app { }         /* Matches class="app" */
 .container { }   /* Used in HTML */

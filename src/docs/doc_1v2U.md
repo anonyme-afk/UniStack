@@ -333,7 +333,7 @@ routes:
 
 ### When to Use Wasm
 
-✅ **Good candidates:**
+[OK] **Good candidates:**
 - Functions called frequently (many times per second)
 - Heavy computation (100ms+)
 - Tight loops with millions of iterations
@@ -341,7 +341,7 @@ routes:
 - Image/audio/video processing
 - Scientific calculations
 
-❌ **Not ideal:**
+[Cross] **Not ideal:**
 - Simple database queries
 - I/O operations (file, network)
 - Small computations (< 1ms)
@@ -449,9 +449,9 @@ print(f"Completed in {duration}ms")
 
 ### Current Phase
 
-✓ Detection and annotation infrastructure ready
-✓ Transpiler integration complete
-✗ Real compilation (Phase 2, requires Binaryen)
+[Check] Detection and annotation infrastructure ready
+[Check] Transpiler integration complete
+[X Mark] Real compilation (Phase 2, requires Binaryen)
 
 ### Data Type Support (Phase 2)
 
@@ -538,14 +538,14 @@ if duration > 100:
 
 ### 2. Keep Functions Pure
 
-✅ Good:
+[OK] Good:
 ```python
 # @wasm
 def pureFunction(x, y):
   return x * y + x / y
 ```
 
-❌ Bad:
+[Cross] Bad:
 ```python
 # @wasm
 globalState = 0
@@ -557,7 +557,7 @@ def impureFunction(x):
 
 ### 3. Minimize Data Transfer
 
-✅ Good:
+[OK] Good:
 ```python
 # @wasm
 def processArray(array):
@@ -565,7 +565,7 @@ def processArray(array):
   return [x * 2 for x in array]
 ```
 
-❌ Bad:
+[Cross] Bad:
 ```python
 # @wasm
 def slowOperation(bigObject):

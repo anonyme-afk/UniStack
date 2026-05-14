@@ -1,0 +1,40 @@
+{
+  "kind": "db",
+  "tables": [
+    {
+      "name": "posts",
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "primary": true,
+          "autoincrement": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "slug",
+          "type": "string",
+          "unique": true,
+          "required": true
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "author",
+          "type": "string"
+        },
+        {
+          "name": "published_at",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

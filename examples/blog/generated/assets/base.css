@@ -1,0 +1,21 @@
+
+:root {
+  --spacing-base: 8px;
+  --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+[data-theme="dark"] {
+  --bg: #121212;
+  --fg: #f0f0f0;
+}
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #000000;
+}
+body {
+  margin:0;
+  padding:0;
+  font-family: var(--font-family);
+  background: var(--bg);
+  color: var(--fg);
+}
+.container { padding: calc(var(--spacing-base) * 2); }

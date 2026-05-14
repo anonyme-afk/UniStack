@@ -267,7 +267,7 @@ async function testModuleImports() {
 
     await assert.rejects(
         async () => { await cmdBuild(tmpDir); },
-        { message: /❌ UniStack: circular import detected/ },
+        { message: /[Cross] UniStack: circular import detected/ },
         'Circular import error was not thrown'
     );
     console.log('english: module circular import test passed | french: test import circulaire réussi');

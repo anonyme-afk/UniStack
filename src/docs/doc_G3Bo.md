@@ -24,7 +24,7 @@
   - license updated to Apache‑2.0 with copyright 2026 anonyme‑afk
   - new docs: SECURITY, LANGUAGE, COOKBOOK
   - rate limiting and middleware improvements
-- Project now v1.0 release‑ready 🚀
+- Project now v1.0 release‑ready [Rocket]
 
 ### Fixed
 - many internal bugs and improved type safety across the toolchain

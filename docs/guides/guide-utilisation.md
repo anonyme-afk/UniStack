@@ -1,4 +1,4 @@
-# 🎓 UniStack - Guide d'utilisation pratique
+# [Graduation] UniStack - Guide d'utilisation pratique
 
 **Objectif:** Vous allow à créer votre première application UniStack en 5 minutes.
 
@@ -277,7 +277,7 @@ unistack app "FormApp" version 1.0 {
 
 ## Bonnes pratiques
 
-### ✅ À faire
+### [OK] À faire
 
 1. **Garder les sections organisées** - HTML, CSS, Routes, Logique séparés clairement
 2. **Nommage cohérent** - `getUserById` vs `get_user_by_id`
@@ -285,7 +285,7 @@ unistack app "FormApp" version 1.0 {
 4. **DRY (Don't Repeat Yourself)** - Réutiliser les fonctions Python
 5. **Fallback UI** - Afficher du contenu pendant le chargement
 
-### ❌ À éviter
+### [Cross] À éviter
 
 1. **Mélanger HTML et logique** - Garder séparation des responsabilités
 2. **Chemins hardcodés** - Utiliser les routes définies
@@ -499,9 +499,9 @@ Visitez http://localhost:3000 et testez!
 ## Ressources
 
 - 📖 [Documentation complète](DOCUMENTATION.md)
-- 🔧 [Configuration du projet](unistack.config.json)
+- [Wrench] [Configuration du projet](unistack.config.json)
 - 📝 [Spécifications UniStack](README.md)
 
 ---
 
-**Prêt à créer votre première app UniStack? Let's go! 🚀**
+**Prêt à créer votre première app UniStack? Let's go! [Rocket]**

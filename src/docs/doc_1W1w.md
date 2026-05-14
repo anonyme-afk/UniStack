@@ -67,11 +67,11 @@ node verify.js
 
 **Expected output:**
 ```
-✓ Node.js version v18.x.x
-✓ File: package.json
-✓ File: src/cli.ts
+[Check] Node.js version v18.x.x
+[Check] File: package.json
+[Check] File: src/cli.ts
 ... (all checks pass)
-✓ All checks passed! Ready to develop.
+[Check] All checks passed! Ready to develop.
 ```
 
 ### 4. Run Tests

@@ -321,7 +321,7 @@ function generateServerTs(ir: CompilationIR): string {
       if (allowed.includes('*/*') || allowed.includes(file.mimetype)) {
         cb(null, true);
       } else {
-        cb(new Error('❌ UniStack: Invalid file type. Accepted: ${route.fileUpload.accept.join(', ')}'), false);
+        cb(new Error('[Cross] UniStack: Invalid file type. Accepted: ${route.fileUpload.accept.join(', ')}'), false);
       }
     }
   }).single('${route.fileUpload.field}'),` :
@@ -334,7 +334,7 @@ ${handlerCode}
 } finally {
   if ((req as any).file) {
     fs.unlink((req as any).file.path, (err) => {
-      if (err) console.error(\`❌ UniStack: failed to clean up temporary file: \${(req as any).file.path}\`, err);
+      if (err) console.error(\`[Cross] UniStack: failed to clean up temporary file: \${(req as any).file.path}\`, err);
     });
   }
 }
@@ -364,7 +364,7 @@ export function createServer(runtime: UniRuntime) {
     mkdirSync(resolve(process.cwd(), uploadDir), { recursive: true });
     console.log(\`english: Upload directory is ready at \${uploadDir}. french: Le répertoire d'upload est prêt sur \${uploadDir}.\`);
     if (dbSchema) await runMigrations(runtime, dbSchema);
-  } catch (e) { console.error(\`❌ UniStack: Could not create upload directory: \${uploadDir}\`, e); }
+  } catch (e) { console.error(\`[Cross] UniStack: Could not create upload directory: \${uploadDir}\`, e); }
   installCors(app, middleware.cors);
   installRateLimit(app, middleware.rateLimit);
   installAuth(app, runtime, middleware.auth);
@@ -872,7 +872,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
     if (v.required) {
       lines.push(
         `  if (${accessor} === undefined || ${accessor} === null || ${accessor} === '') {`,
-        `    throw new Error('❌ UniStack: missing required env var: ${name}');`,
+        `    throw new Error('[Cross] UniStack: missing required env var: ${name}');`,
         '  }',
       );
     }
@@ -889,7 +889,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
         `  if (${accessor} !== undefined && ${accessor} !== null && ${accessor} !== '') {`,
         `    const __uniNum = Number(${accessor});`,
         `    if (Number.isNaN(__uniNum)) {`,
-        `      throw new Error('❌ UniStack: env var ${name} must be a number');`,
+        `      throw new Error('[Cross] UniStack: env var ${name} must be a number');`,
         '    }',
         `    ${accessor} = String(__uniNum);`,
         '  }',
@@ -899,7 +899,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
         `  if (${accessor} !== undefined && ${accessor} !== null && ${accessor} !== '') {`,
         `    const low = ${accessor}.toLowerCase();`,
         `    if (low !== 'true' && low !== 'false') {`,
-        `      throw new Error('❌ UniStack: env var ${name} must be boolean');`,
+        `      throw new Error('[Cross] UniStack: env var ${name} must be boolean');`,
         '    }',
         `    ${accessor} = low;`,
         '  }',
@@ -1704,7 +1704,7 @@ function validateAst(ast: UniFile, pyBindings: PyBinding[]): void {
             const sqlQuery = stmt.expr.query;
             if (detectSqlConcatenation(sqlQuery)) {
               errors.push(
-                `❌ UniStack: SQL injection risk in ${route.method} ${route.path} — use parametrized sql("...", variable) instead`,
+                `[Cross] UniStack: SQL injection risk in ${route.method} ${route.path} — use parametrized sql("...", variable) instead`,
               );
             }
           } else if (stmt.kind === 'return' && stmt.expr.lang === 'py') {

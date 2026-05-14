@@ -1,0 +1,136 @@
+unistack app "UniTodo" version 1.0 {
+  config: 
+    port = 4000;
+    theme = "dark";
+
+  db:
+    table tasks {
+      id : integer primary autoincrement;
+      title : string required;
+      completed : boolean default false;
+      created_at : string;
+    }
+
+  html-ui:
+    <div class="todo-app">
+      <header>
+        <h1>UniTodo</h1>
+        <p>Industrial Strength Task Management</p>
+      </header>
+
+      <main>
+        <section class="input-group">
+          <input type="text" id="new-task" placeholder="What needs to be done?" />
+          <button onclick="addTask()">Add Task</button>
+        </section>
+
+        <ul id="task-list">
+          <!-- Tasks will be injected here by the runtime -->
+          <li class="loading">Synchronizing with Python backend...</li>
+        </ul>
+      </main>
+
+      <footer>
+        <span id="task-count">0</span> tasks remaining
+      </footer>
+    </div>;
+
+  css:
+    :root {
+      --primary: #6366f1;
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .todo-app {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 { margin: 0; color: var(--primary); }
+    
+    .input-group {
+      display: flex;
+      gap: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    input {
+      flex: 1;
+      background: #334155;
+      border: 1px solid #475569;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      color: white;
+    }
+
+    button {
+      background: var(--primary);
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    ul { list-style: none; padding: 0; }
+    li {
+      background: #334155;
+      margin-bottom: 0.5rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .loading { color: #94a3b8; font-style: italic; };
+
+  py-logic:
+    import datetime
+
+    def get_tasks():
+      # Accessing the auto-generated SQL binding
+      return sql("SELECT * FROM tasks ORDER BY id DESC")
+
+    def add_task(title):
+      if not title:
+        return {"ok": False, "error": "Title is required"}
+      
+      now = datetime.datetime.now().isoformat()
+      sql("INSERT INTO tasks (title, created_at) VALUES (?, ?)", [title, now])
+      return {"ok": True}
+
+    def toggle_task(id, completed):
+      sql("UPDATE tasks SET completed = ? WHERE id = ?", [completed, id])
+      return {"ok": True}
+
+  routes:
+    GET /api/tasks {
+      return py:get_tasks();
+    }
+
+    POST /api/tasks {
+      validate: title:string:required;
+      return py:add_task(req.body.title);
+    }
+
+    PATCH /api/tasks/:id {
+      return py:toggle_task(req.params.id, req.body.completed);
+    }
+}

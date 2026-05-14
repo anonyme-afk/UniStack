@@ -44,7 +44,7 @@ unistack app "TodoApp" version 1.0 {
     async function loadTodos() {
       const todos = await fetch('/api/todos').then(r => r.json());
       document.getElementById('todoList').innerHTML = todos.map(t =>
-        '<li>' + t.text + ' <button onclick="deleteTodo(' + t.id + ')">✕</button></li>'
+        '<li>' + t.text + ' <button onclick="deleteTodo(' + t.id + ')">[Multiply]</button></li>'
       ).join('');
     }
     async function deleteTodo(id) {

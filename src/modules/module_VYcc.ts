@@ -815,7 +815,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
     if (v.required) {
       lines.push(
         `  if (${accessor} === undefined || ${accessor} === null || ${accessor} === '') {`,
-        `    throw new Error('❌ UniStack: missing required env var: ${name}');`,
+        `    throw new Error('[Cross] UniStack: missing required env var: ${name}');`,
         '  }',
       );
     }
@@ -832,7 +832,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
         `  if (${accessor} !== undefined && ${accessor} !== null && ${accessor} !== '') {`,
         `    const __uniNum = Number(${accessor});`,
         `    if (Number.isNaN(__uniNum)) {`,
-        `      throw new Error('❌ UniStack: env var ${name} must be a number');`,
+        `      throw new Error('[Cross] UniStack: env var ${name} must be a number');`,
         '    }',
         `    ${accessor} = String(__uniNum);`,
         '  }',
@@ -842,7 +842,7 @@ function emitEnvValidation(vars: EnvVarDef[] | undefined): string {
         `  if (${accessor} !== undefined && ${accessor} !== null && ${accessor} !== '') {`,
         `    const low = ${accessor}.toLowerCase();`,
         `    if (low !== 'true' && low !== 'false') {`,
-        `      throw new Error('❌ UniStack: env var ${name} must be boolean');`,
+        `      throw new Error('[Cross] UniStack: env var ${name} must be boolean');`,
         '    }',
         `    ${accessor} = low;`,
         '  }',

@@ -775,7 +775,7 @@ function parseRouteStmt(line: string): RouteStmt {
     const maxSizeMatch = payload.match(/maxSize\s*=\s*"([^"]+)"/);
 
     if (!fieldMatch) {
-      throw new Error('❌ UniStack: file directive requires a "field" attribute.');
+      throw new Error('[Cross] UniStack: file directive requires a "field" attribute.');
     }
 
     const field = fieldMatch[1];
@@ -784,7 +784,7 @@ function parseRouteStmt(line: string): RouteStmt {
       try {
         accept = JSON.parse(acceptMatch[1]);
       } catch (e) {
-        throw new Error(`❌ UniStack: could not parse "accept" array in file directive: ${acceptMatch[1]}`);
+        throw new Error(`[Cross] UniStack: could not parse "accept" array in file directive: ${acceptMatch[1]}`);
       }
     }
     const maxSize = maxSizeMatch ? maxSizeMatch[1] : '10mb';

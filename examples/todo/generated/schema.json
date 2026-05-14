@@ -1,0 +1,29 @@
+{
+  "kind": "db",
+  "tables": [
+    {
+      "name": "tasks",
+      "columns": [
+        {
+          "name": "id",
+          "type": "integer",
+          "primary": true,
+          "autoincrement": true
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "completed",
+          "type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

@@ -241,13 +241,13 @@ py-logic:
 
 ```uni
 routes:
-  # ✓ Correct
+  # [Check] Correct
   GET /users { return py:getUsers; }      # Retrieve data
   POST /users { return py:createUser; }   # Create data
   PUT /users/:id { return py:updateUser; }   # Update data
   DELETE /users/:id { return py:deleteUser; } # Delete data
   
-  # ✗ Wrong
+  # [X Mark] Wrong
   GET /create { return py:createUser; }   # Should be POST
   GET /delete/:id { return py:deleteUser; } # Should be DELETE
 ```
@@ -280,7 +280,7 @@ py-logic:
 
 ```ini
 routes:
-  # ✓ Good - explicit status
+  # [Check] Good - explicit status
   POST /users {
     status 201;
     return py:createUser;
@@ -535,7 +535,7 @@ ab -n 100 -c 10 http://localhost:3000/api/users
 ### 1. Semantic HTML
 
 ```ini
-# ✓ Good - use semantic tags
+# [Check] Good - use semantic tags
 html:
   <header>
     <h1>Title</h1>
@@ -545,7 +545,7 @@ html:
   </main>
   <footer>Copyright</footer>;
 
-# ✗ Poor - generic divs
+# [X Mark] Poor - generic divs
 html:
   <div class="header">
     <div class="title">Title</div>
@@ -555,11 +555,11 @@ html:
 ### 2. Accessible Components
 
 ```html
-# ✗ Bad - no labels
+# [X Mark] Bad - no labels
 <input type="email" />
 <button>Send</button>
 
-# ✓ Good - proper labels
+# [Check] Good - proper labels
 <label for="email">Email:</label>
 <input id="email" type="email" />
 <button aria-label="Send email">Send</button>
@@ -568,7 +568,7 @@ html:
 ### 3. Performance-First
 
 ```python
-# ✗ Slow - N+1 queries
+# [X Mark] Slow - N+1 queries
 py-logic:
   def getPostsWithAuthors():
     posts = DataSet.all('posts').toSQL()
@@ -576,7 +576,7 @@ py-logic:
       author = DataSet.all('users').where({'id': post.author_id}).toSQL()
       post['author'] = author
 
-# ✓ Fast - single query with join
+# [Check] Fast - single query with join
 py-logic:
   def getPostsWithAuthors():
     query = """
@@ -590,11 +590,11 @@ py-logic:
 ### 4. Security First
 
 ```python
-# ✗ SQL Injection risk
+# [X Mark] SQL Injection risk
 def search(query):
   return database.query(f"SELECT * FROM posts WHERE title LIKE '{query}'")
 
-# ✓ Safe with parameterized queries
+# [Check] Safe with parameterized queries
 def search(query):
   sql = DataSet.all('posts').where({'title': query}).toSQL()
   return database.query(sql.query, *sql.params)

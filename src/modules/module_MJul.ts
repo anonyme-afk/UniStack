@@ -783,7 +783,7 @@ function parseRouteStmt(line: string): RouteStmt {
     const maxSizeMatch = payload.match(/maxSize\s*=\s*"([^"]+)"/);
 
     if (!fieldMatch) {
-      throw new Error('❌ UniStack: file directive requires a "field" attribute.');
+      throw new Error('[Cross] UniStack: file directive requires a "field" attribute.');
     }
 
     const field = fieldMatch[1];
@@ -792,7 +792,7 @@ function parseRouteStmt(line: string): RouteStmt {
       try {
         accept = JSON.parse(acceptMatch[1]);
       } catch (e) {
-        throw new Error(`❌ UniStack: could not parse "accept" array in file directive: ${acceptMatch[1]}`);
+        throw new Error(`[Cross] UniStack: could not parse "accept" array in file directive: ${acceptMatch[1]}`);
       }
     }
     const maxSize = maxSizeMatch ? maxSizeMatch[1] : '10mb';
@@ -1078,7 +1078,7 @@ function parseDbSection(lines: string[]): DbSection {
 
     const tableMatch = trimmed.match(/^table\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*\{/);
     if (tableMatch) {
-      if (currentTable) throw new Error('❌ UniStack: Nested table definitions are not allowed.');
+      if (currentTable) throw new Error('[Cross] UniStack: Nested table definitions are not allowed.');
       currentTable = { name: tableMatch[1], columns: [] };
       continue;
     }
@@ -1114,7 +1114,7 @@ function parseDbSection(lines: string[]): DbSection {
   }
 
   if (currentTable) {
-    throw new Error('❌ UniStack: Unterminated table block found in db section.');
+    throw new Error('[Cross] UniStack: Unterminated table block found in db section.');
   }
 
   return {

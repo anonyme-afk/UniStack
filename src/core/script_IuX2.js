@@ -54,15 +54,15 @@ function logSection(title) {
 }
 
 function logSuccess(msg) {
-  log(COLOR.green, `✓ ${msg}`);
+  log(COLOR.green, `[Check] ${msg}`);
 }
 
 function logError(msg) {
-  log(COLOR.red, `✗ ${msg}`);
+  log(COLOR.red, `[X Mark] ${msg}`);
 }
 
 function logWarning(msg) {
-  log(COLOR.yellow, `⚠ ${msg}`);
+  log(COLOR.yellow, `[Warning] ${msg}`);
 }
 
 function logInfo(msg) {

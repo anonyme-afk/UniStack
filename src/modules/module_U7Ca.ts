@@ -220,7 +220,7 @@ fi
 echo "• Finalizing binary..."
 
 size dist/app
-echo "✓ Build complete!"
+echo "[Check] Build complete!"
 echo "Binary: ./dist/app"
 `;
   }

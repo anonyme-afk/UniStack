@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-console.log('📦 starting parser tests');
+console.log('[Package] starting parser tests');
 import assert from 'assert';
 import { parseUniFile } from '../parser/uniParser.js';
 
-console.log('📦 loading auxiliary modules');
+console.log('[Package] loading auxiliary modules');
 let UniStackLanguageServer: any;
 let uniStd: any;
 let installPackage: any;
@@ -33,9 +33,9 @@ let UIEngine: any;
     installPackage = pkgmod.installPackage;
     const uimod = await import('../compiler/ui-engine.js');
     UIEngine = uimod.UIEngine;
-    console.log('📦 auxiliary modules loaded successfully');
+    console.log('[Package] auxiliary modules loaded successfully');
   } catch (e) {
-    console.error('❌ failed to load auxiliary module', e);
+    console.error('[Cross] failed to load auxiliary module', e);
     process.exit(1);
   }
 })();

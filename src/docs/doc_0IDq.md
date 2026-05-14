@@ -69,7 +69,7 @@ unistack app "MyApp" version 1.0 {
 ### Functions
 
 ```python
-# ✓ Good - clear, descriptive
+# [Check] Good - clear, descriptive
 def getUserById(userId):
   pass
 
@@ -79,7 +79,7 @@ def createNewPost(title, content):
 def validateEmailFormat(email):
   pass
 
-# ✗ Poor - vague or unclear
+# [X Mark] Poor - vague or unclear
 def getUser():
   pass
 
@@ -93,12 +93,12 @@ def do_something():
 ### Variables
 
 ```python
-# ✓ Good - clear intent
+# [Check] Good - clear intent
 activeUsers = []
 totalPrice = 0
 isValid = False
 
-# ✗ Poor
+# [X Mark] Poor
 users = []         # "active" implicit
 price = 0          # which total?
 valid = False      # confusing type
@@ -108,14 +108,14 @@ valid = False      # confusing type
 
 ```ini
 routes:
-  # ✓ Good - RESTful, clear action
+  # [Check] Good - RESTful, clear action
   GET /api/users           # Get all users
   GET /api/users/:id       # Get one user
   POST /api/users          # Create user
   PUT /api/users/:id       # Update user
   DELETE /api/users/:id    # Delete user
   
-  # ✗ Poor - vague
+  # [X Mark] Poor - vague
   GET /users/get
   GET /user/info/:id
   POST /user/new
@@ -126,7 +126,7 @@ routes:
 
 <br>
 ```html
-# ✓ Good - uses design system
+# [Check] Good - uses design system
 <div class="container">
   <button class="btn-primary">Submit</button>
   <div class="card">
@@ -134,7 +134,7 @@ routes:
   </div>
 </div>
 
-# ✗ Poor - custom utility classes
+# [X Mark] Poor - custom utility classes
 <div class="mx-auto w-full max-w-6xl">
   <button class="bg-blue px-4 py-2 rounded">Submit</button>
   <div class="bg-white p-4 shadow">Title</div>
@@ -206,7 +206,7 @@ py-logic:
 ### Clear Comments
 
 ```python
-# ✓ Good
+# [Check] Good
 py-logic:
   # Get user by ID from database
   def getUserById(id):
@@ -219,7 +219,7 @@ py-logic:
     """
     return DataSet.all('users').where({'id': id}).toSQL()
 
-# ✗ Poor
+# [X Mark] Poor
 py-logic:
   # Get stuff
   def u(i):
@@ -230,18 +230,18 @@ py-logic:
 
 ```html
 html:
-  <!-- ✓ Good comment -->
+  <!-- [Check] Good comment -->
   <section class="hero">
     <h1>Welcome</h1>
   </section>
   
-  <!-- ✓ Explain complex structure -->
+  <!-- [Check] Explain complex structure -->
   <!-- Navigation: sticky header with auth user dropdown -->
   <nav class="navbar sticky-top">
     ...
   </nav>
 
-  <!-- ✗ Obvious comments (don't add) -->
+  <!-- [X Mark] Obvious comments (don't add) -->
   <!-- This is a div -->
   <div class="container">
 ```
@@ -253,7 +253,7 @@ html:
 ### Validate Input
 
 ```python
-# ✓ Good - validate before using
+# [Check] Good - validate before using
 py-logic:
   def createPost(title, content):
     if not title or len(title) < 3:
@@ -266,7 +266,7 @@ py-logic:
       'content': content
     })
 
-# ✗ Poor - assume data is valid
+# [X Mark] Poor - assume data is valid
 py-logic:
   def createPost(title, content):
     return DataSet.create('posts', {
@@ -278,7 +278,7 @@ py-logic:
 ### Handle Errors Gracefully
 
 ```python
-# ✓ Good
+# [Check] Good
 routes:
   POST /api/users {
     status 200;
@@ -299,7 +299,7 @@ py-logic:
     except Exception as e:
       return {'error': 'Server error', 'code': 500}
 
-# ✗ Poor - crashes on bad input
+# [X Mark] Poor - crashes on bad input
 py-logic:
   def createUser(email, name):
     return DataSet.create('users', {'email': email, 'name': name})
@@ -312,7 +312,7 @@ py-logic:
 ### Use Pagination
 
 ```python
-# ✓ Good
+# [Check] Good
 py-logic:
   def getUsers(page: 1, limit: 20):
     offset = (page - 1) * limit
@@ -321,7 +321,7 @@ py-logic:
 routes:
   GET /api/users { return py:getUsers; }
 
-# ✗ Poor - returns all records
+# [X Mark] Poor - returns all records
 py-logic:
   def getUsers():
     return DataSet.all('users').toSQL()
@@ -330,13 +330,13 @@ py-logic:
 ### Optimize Queries
 
 ```python
-# ✓ Good - single query
+# [Check] Good - single query
 py-logic:
   def getPostsWithAuthors():
     # Efficient single query (Phase 2: with joins)
     return DataSet.all('posts').toSQL()
 
-# ✗ Poor - N+1 queries
+# [X Mark] Poor - N+1 queries
 py-logic:
   def getPostsWithAuthors():
     posts = DataSet.all('posts').toSQL()
@@ -349,7 +349,7 @@ py-logic:
 ### Cache Results
 
 ```python
-# ✓ Good - cache frequently accessed data
+# [Check] Good - cache frequently accessed data
 _config_cache = None
 
 py-logic:
@@ -359,7 +359,7 @@ py-logic:
       _config_cache = DataSet.all('config').toSQL()
     return _config_cache
 
-# ✗ Poor - query every time
+# [X Mark] Poor - query every time
 py-logic:
   def getConfig():
     return DataSet.all('config').toSQL()
@@ -372,12 +372,12 @@ py-logic:
 ### Always Parameterize Queries
 
 ```python
-# ✓ Safe - uses DataSet
+# [Check] Safe - uses DataSet
 py-logic:
   def searchUsers(query):
     return DataSet.all('users').where({'name': query}).toSQL()
 
-# ✗ Vulnerable - SQL injection risk
+# [X Mark] Vulnerable - SQL injection risk
 py-logic:
   def searchUsers(query):
     return f"SELECT * FROM users WHERE name LIKE '{query}'"
@@ -386,7 +386,7 @@ py-logic:
 ### Validate & Sanitize Input
 
 ```python
-# ✓ Good
+# [Check] Good
 py-logic:
   def updateUser(id, email):
     # Validate ID is number
@@ -400,7 +400,7 @@ py-logic:
     # Safe query
     return DataSet.update('users', {'email': email}, {'id': id})
 
-# ✗ Poor
+# [X Mark] Poor
 py-logic:
   def updateUser(id, email):
     return DataSet.update('users', {'email': email}, {'id': id})
@@ -436,7 +436,7 @@ py-logic:
 ### Use Semantic HTML
 
 ```html
-# ✓ Good - semantic structure
+# [Check] Good - semantic structure
 html:
   <header>
     <h1>Site Title</h1>
@@ -457,7 +457,7 @@ html:
     <p>Copyright 2026</p>
   </footer>;
 
-# ✗ Poor - generic divs
+# [X Mark] Poor - generic divs
 html:
   <div class="header">
     <div class="title">Site Title</div>
@@ -470,14 +470,14 @@ html:
 ### Accessibility
 
 ```html
-# ✓ Good
+# [Check] Good
 html:
   <label for="email">Email:</label>
   <input id="email" type="email" required />
   <button aria-label="Submit form">Submit</button>
   <img src="photo.jpg" alt="User profile picture" />;
 
-# ✗ Poor
+# [X Mark] Poor
 html:
   <input type="email" />
   <button>Submit</button>
@@ -487,7 +487,7 @@ html:
 ### Use Design System Classes
 
 ```html
-# ✓ Good
+# [Check] Good
 html:
   <div class="container">
     <button class="btn-primary">Click</button>
@@ -497,7 +497,7 @@ html:
     </div>
   </div>;
 
-# ✗ Poor - custom styling
+# [X Mark] Poor - custom styling
 html:
   <div style="max-width: 1200px; margin: 0 auto;">
     <button style="background: blue; padding: 10px;">Click</button>
@@ -511,12 +511,12 @@ html:
 ### Use CSS Variables
 
 ```css
-# ✓ Good - uses design system vars
+# [Check] Good - uses design system vars
 style:
   .custom-button { color: var(--primary); }
   .error { color: var(--danger); }
 
-# ✗ Poor - hardcoded colors
+# [X Mark] Poor - hardcoded colors
 style:
   .custom-button { color: #20b7e8; }
   .error { color: #f00; }
@@ -525,13 +525,13 @@ style:
 ### Avoid !important
 
 ```css
-# ✓ Good - proper specificity
+# [Check] Good - proper specificity
 style:
   .container .btn-primary { 
     background: var(--primary); 
   }
 
-# ✗ Poor
+# [X Mark] Poor
 style:
   .btn-primary { 
     background: blue !important; 
@@ -541,13 +541,13 @@ style:
 ### Keep CSS Minimal
 
 ```css
-# ✓ Good - uses design system defaults
+# [Check] Good - uses design system defaults
 style:
   .featured { 
     border: 2px solid var(--primary); 
   }
 
-# ✗ Poor - duplicates design system
+# [X Mark] Poor - duplicates design system
 style:
   button { 
     padding: 10px 20px;
@@ -564,7 +564,7 @@ style:
 ### Event Handling
 
 ```javascript
-# ✓ Good - clean, descriptive
+# [Check] Good - clean, descriptive
 js-events:
   document.getElementById('submit-btn').addEventListener('click', (e) => {
     e.preventDefault();
@@ -574,7 +574,7 @@ js-events:
     }
   });
 
-# ✗ Poor - inline handlers
+# [X Mark] Poor - inline handlers
 html:
   <button onclick="submitForm(this.value)">Submit</button>
 ```
@@ -582,7 +582,7 @@ html:
 ### Async Operations
 
 ```javascript
-# ✓ Good - uses async/await
+# [Check] Good - uses async/await
 js-events:
   document.getElementById('search').addEventListener('input', async (e) => {
     const results = await fetch(`/api/search?q=${e.target.value}`)
@@ -590,7 +590,7 @@ js-events:
     displayResults(results);
   });
 
-# ✗ Poor - callback hell
+# [X Mark] Poor - callback hell
 js-events:
   document.getElementById('search').addEventListener('input', (e) => {
     fetch(`/api/search?q=${e.target.value}`, (err, res) => {
@@ -609,7 +609,7 @@ js-events:
 ### Clear Function Names
 
 ```python
-# ✓ Good
+# [Check] Good
 py-logic:
   def getUserEmailByUserId(userId):
     pass
@@ -620,7 +620,7 @@ py-logic:
   def calculateOrderTotal(items):
     pass
 
-# ✗ Poor
+# [X Mark] Poor
 py-logic:
   def get(id):
     pass
@@ -635,13 +635,13 @@ py-logic:
 ### Use Type-Like Comments
 
 ```python
-# ✓ Good - describes types
+# [Check] Good - describes types
 py-logic:
   def getUserData(userId):  # userId: int -> dict
     """Get user data by ID"""
     return DataSet.all('users').where({'id': userId}).toSQL()
 
-# ✗ Poor - unclear types
+# [X Mark] Poor - unclear types
 py-logic:
   def getUserData(userId):
     return DataSet.all('users').where({'id': userId}).toSQL()
@@ -686,7 +686,7 @@ grep "class=" generated/index.html
 
 ```python
 py-logic:
-  # ✓ Good - explains purpose and params
+  # [Check] Good - explains purpose and params
   def getUserById(userId):
     """
     Retrieve user data by ID from database.
@@ -699,7 +699,7 @@ py-logic:
     """
     ...
 
-  # ✗ Poor - no documentation
+  # [X Mark] Poor - no documentation
   def getUserById(userId):
     return DataSet.all('users').where({'id': userId}).toSQL()
 ```
@@ -707,7 +707,7 @@ py-logic:
 ### Document Complex Logic
 
 ```python
-# ✓ Good - explains algorithm
+# [Check] Good - explains algorithm
 py-logic:
   def calculateDiscount(price, customerAge):
     # Senior citizens (65+) get 15% discount

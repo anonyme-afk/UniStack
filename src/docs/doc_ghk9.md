@@ -674,7 +674,7 @@ unistack app "TodoApp" version 1.0 {
       list.innerHTML = todos.map(todo => `
         <li class="${todo.done ? 'done' : ''}">
           ${todo.text}
-          <span class="delete-btn" onclick="deleteTodo(${todo.id})">✕</span>
+          <span class="delete-btn" onclick="deleteTodo(${todo.id})">[Multiply]</span>
         </li>
       `).join('');
     }

@@ -58,24 +58,24 @@ async function testDesignSystemIntegration() {
   ];
   
   checks.forEach(check => {
-    const status = check.found ? '✓' : '✗';
+    const status = check.found ? '[Check]' : '[X Mark]';
     console.log(`${status} ${check.name}`);
   });
 
   const allPassed = checks.every(c => c.found);
   if (allPassed) {
-    console.log('\n✓ All design system checks passed!');
+    console.log('\n[Check] All design system checks passed!');
   } else {
-    console.log('\n✗ Some checks failed!');
+    console.log('\n[X Mark] Some checks failed!');
     process.exit(1);
   }
   
   // Check if base.css was copied to assets directory
   try {
     const baseCss = await fs.readFile(resolve(tmpDir, 'assets', 'base.css'), 'utf8');
-    console.log(`✓ base.css copied to assets (${baseCss.length} bytes)`);
+    console.log(`[Check] base.css copied to assets (${baseCss.length} bytes)`);
   } catch (e) {
-    console.log('✗ base.css not copied to assets');
+    console.log('[X Mark] base.css not copied to assets');
   }
 }
 

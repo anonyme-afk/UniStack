@@ -32,7 +32,7 @@ french:  Exemple d’utilisation HTML pour une favicon :
    - `npx unistack build` – parse/transpile `app.uni`, produce `generated/` files and bundle into `dist/`.
    - `npx unistack dev` – build then start a development server on `localhost:3000`.
 
-> ⚠️ In this MVP stage the CLI is a simple wrapper around the TypeScript
+> [Warning]️ In this MVP stage the CLI is a simple wrapper around the TypeScript
 > functions in `src/cli.ts`.
 
 ## Language Basics / Bases du langage

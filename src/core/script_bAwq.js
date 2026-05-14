@@ -17,13 +17,13 @@ if (majorVersion >= 18) {
   checks.push({
     name: 'Node.js version',
     passed: true,
-    message: `✓ Node ${nodeVersion}`,
+    message: `[Check] Node ${nodeVersion}`,
   });
 } else {
   checks.push({
     name: 'Node.js version',
     passed: false,
-    message: `✗ Node ${nodeVersion} (require 18+)`,
+    message: `[X Mark] Node ${nodeVersion} (require 18+)`,
   });
 }
 
@@ -45,13 +45,13 @@ for (const file of filesToCheck) {
     checks.push({
       name: `File: ${file}`,
       passed: true,
-      message: '✓',
+      message: '[Check]',
     });
   } catch {
     checks.push({
       name: `File: ${file}`,
       passed: false,
-      message: '✗ not found',
+      message: '[X Mark] not found',
     });
   }
 }
@@ -65,14 +65,14 @@ for (const dir of dirsToCheck) {
       checks.push({
         name: `Directory: ${dir}`,
         passed: true,
-        message: '✓',
+        message: '[Check]',
       });
     }
   } catch {
     checks.push({
       name: `Directory: ${dir}`,
       passed: false,
-      message: '✗ not found',
+      message: '[X Mark] not found',
     });
   }
 }
@@ -90,5 +90,5 @@ for (const check of checks) {
   }
 }
 
-console.log('\n' + (allPassed ? '✓ All checks passed! Ready to develop.' : '✗ Some checks failed. Please review above.'));
+console.log('\n' + (allPassed ? '[Check] All checks passed! Ready to develop.' : '[X Mark] Some checks failed. Please review above.'));
 process.exit(allPassed ? 0 : 1);

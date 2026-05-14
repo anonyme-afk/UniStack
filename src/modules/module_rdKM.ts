@@ -112,15 +112,15 @@ function validateEnvVars(vars: CompilationIR['backend']['env'] | undefined): voi
     const name = v.name;
     const val = process.env[name];
     if ((val === undefined || val === null || val === '') && v.required) {
-      throw new Error(`❌ UniStack: missing required env var: ${name}`);
+      throw new Error(`[Cross] UniStack: missing required env var: ${name}`);
     }
     if (v.type === 'number' && val && isNaN(Number(val))) {
-      throw new Error(`❌ UniStack: env var ${name} must be a number`);
+      throw new Error(`[Cross] UniStack: env var ${name} must be a number`);
     }
     if (v.type === 'boolean' && val) {
       const low = String(val).toLowerCase();
       if (low !== 'true' && low !== 'false') {
-        throw new Error(`❌ UniStack: env var ${name} must be boolean`);
+        throw new Error(`[Cross] UniStack: env var ${name} must be boolean`);
       }
     }
   }

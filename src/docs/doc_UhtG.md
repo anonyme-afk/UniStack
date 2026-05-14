@@ -31,7 +31,7 @@ npm run status   # Shows project health
 npm run test     # Verifies transpiler works
 ```
 
-All three should pass ✓
+All three should pass [Check]
 
 ---
 
@@ -108,11 +108,11 @@ cat tsconfig.json | grep strict
 
 **Solution:**
 ```typescript
-// ✓ Correct (include .js)
+// [Check] Correct (include .js)
 import { foo } from './bar.js';
 import { DataSet } from '../runtime/data.js';
 
-// ✗ Wrong (missing .js)
+// [X Mark] Wrong (missing .js)
 import { foo } from './bar';
 ```
 
@@ -444,8 +444,8 @@ ls -la dist/assets/base.css
 grep "base.css" dist/index.html
 
 # Verify class names (case-sensitive)
-# ✓ <button class="btn-primary">
-# ✗ <button class="btn-Primary">
+# [Check] <button class="btn-primary">
+# [X Mark] <button class="btn-Primary">
 
 npm run build
 ```
@@ -478,10 +478,10 @@ grep "<style>\|<link" generated/index.html
 
 **Solution:**
 ```python
-# ✓ Correct usage:
+# [Check] Correct usage:
 query = DataSet.all('users').where({'id': 1}).toSQL()
 
-# ✗ Wrong format:
+# [X Mark] Wrong format:
 query = DataSet.all('users').where('id = 1').toSQL()  # Wrong
 
 # Verify output
@@ -495,11 +495,11 @@ print(result)  # Check format
 
 **Solution:**
 ```python
-# ✗ Never do this:
+# [X Mark] Never do this:
 param = "' OR '1'='1"
 query = f"SELECT * FROM users WHERE id = {param}"
 
-# ✓ Always use DataSet:
+# [Check] Always use DataSet:
 params = {'id': user_input}
 query = DataSet.all('users').where(params).toSQL()
 # Automatically safe
@@ -624,10 +624,10 @@ node clean.js  # Cross-platform cleanup
 ```typescript
 import { join, resolve } from 'path';
 
-// ✓ Correct
+// [Check] Correct
 const file = resolve('src', 'app.uni');
 
-// ✗ Wrong
+// [X Mark] Wrong
 const file = 'src/app.uni';
 ```
 

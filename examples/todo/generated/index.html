@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body><div class="todo-app">
+      <header>
+        <h1>UniTodo</h1>
+        <p>Industrial Strength Task Management</p>
+      </header>
+      <main>
+        <section class="input-group">
+          <input type="text" id="new-task" placeholder="What needs to be done?" />
+          <button onclick="addTask()">Add Task</button>
+        </section>
+        <ul id="task-list">
+          <!-- Tasks will be injected here by the runtime -->
+          <li class="loading">Synchronizing with Python backend...</li>
+        </ul>
+      </main>
+      <footer>
+        <span id="task-count">0</span> tasks remaining
+      </footer>
+    </div></body>
+</html>

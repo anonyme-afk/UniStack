@@ -25,13 +25,13 @@ function test(name: string, fn: () => void | Promise<void>): void {
     const result = fn();
     if (result instanceof Promise) {
       result
-        .then(() => console.log(`✓ ${name}`))
-        .catch((err) => console.error(`✗ ${name}: ${err}`));
+        .then(() => console.log(`[Check] ${name}`))
+        .catch((err) => console.error(`[X Mark] ${name}: ${err}`));
     } else {
-      console.log(`✓ ${name}`);
+      console.log(`[Check] ${name}`);
     }
   } catch (err) {
-    console.error(`✗ ${name}: ${err}`);
+    console.error(`[X Mark] ${name}: ${err}`);
   }
 }
 

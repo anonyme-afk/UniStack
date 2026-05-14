@@ -1,4 +1,4 @@
-# 📚 UniStack - Documentation Complète
+# [Books] UniStack - Documentation Complète
 
 **Dernière mise à jour:** 26 février 2026  
 **Version:** 0.1.0 (MVP)
@@ -203,7 +203,7 @@ py-logic:
 ```
 
 **Limitations MVP:**
-- ⚠️ **NOT EXECUTED** - Stub seulement (no Python runtime yet)
+- [Warning]️ **NOT EXECUTED** - Stub seulement (no Python runtime yet)
 - Code sauvegardé pour documentation future
 - Les fonctions sont déclarées mais non appelables
 - Sera implémenté en **Phase 2** avec Python-in-Wasm ou Node.js shim
@@ -310,7 +310,7 @@ Source (.uni)
 
 ### 1️⃣ Parser (`src/parser/uniParser.ts`)
 
-**État:** ✅ Implémenté (hand-written, pas ANTLR)
+**État:** [OK] Implémenté (hand-written, pas ANTLR)
 
 Prend le source `.uni` et produit une **strutcture AST** TypeScript.
 
@@ -504,7 +504,7 @@ attachDomReady(() => {
 
 ## Limitations & Roadmap
 
-### ❌ MVP Limitations (v0.1.0)
+### [Cross] MVP Limitations (v0.1.0)
 
 | Domaine | Limitation | Workaround |
 |---------|-----------|-----------|
@@ -516,12 +516,12 @@ attachDomReady(() => {
 | **Error handling** | Messages d'erreur basiques | Amélioré en Phase 2 |
 | **ANTLR** | Grammaire définie mais unused | Parser hand-written actuel |
 
-### ✅ Phase 1 (MVP) - Réalisé
-- ✅ Syntaxe fusionnée JS/HTML/CSS/Python/SQL
-- ✅ Parsing + transpilation basique
-- ✅ CLI avec init/build/dev
-- ✅ Runtime Node.js + client
-- ✅ Routes HTTP (GET/POST/etc)
+### [OK] Phase 1 (MVP) - Réalisé
+- [OK] Syntaxe fusionnée JS/HTML/CSS/Python/SQL
+- [OK] Parsing + transpilation basique
+- [OK] CLI avec init/build/dev
+- [OK] Runtime Node.js + client
+- [OK] Routes HTTP (GET/POST/etc)
 
 ### 📋 Phase 2 (À venir)
 - [ ] Python runtime avec Pyodide ou shim Node.js
@@ -533,7 +533,7 @@ attachDomReady(() => {
 - [ ] Debugger multi-langage
 - [ ] Export vers Electron/PWA
 
-### 🚀 Phase 3+
+### [Rocket] Phase 3+
 - [ ] Graphql support
 - [ ] ORM intégré
 - [ ] Authentification native

@@ -15,9 +15,9 @@ const dirs = ['dist', 'generated'];
     const path = resolve(dir);
     try {
       await fs.rm(path, { recursive: true, force: true });
-      console.log(`✓ Removed ${path}`);
+      console.log(`[Check] Removed ${path}`);
     } catch (err) {
-      console.warn(`✗ Could not remove ${path}:`, err.message);
+      console.warn(`[X Mark] Could not remove ${path}:`, err.message);
     }
   }
 
@@ -26,11 +26,11 @@ const dirs = ['dist', 'generated'];
     const path = resolve(dir);
     try {
       await fs.mkdir(path, { recursive: true });
-      console.log(`✓ Created ${path}`);
+      console.log(`[Check] Created ${path}`);
     } catch (err) {
-      console.warn(`✗ Could not create ${path}:`, err.message);
+      console.warn(`[X Mark] Could not create ${path}:`, err.message);
     }
   }
 
-  console.log('\n✓ Clean complete');
+  console.log('\n[Check] Clean complete');
 })();

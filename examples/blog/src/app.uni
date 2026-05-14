@@ -1,0 +1,199 @@
+unistack app "DevBlog" version 1.0 {
+  config:
+    port = 5000;
+    theme = "modern-dark";
+
+  db:
+    table posts {
+      id : integer primary autoincrement;
+      title : string required;
+      slug : string unique required;
+      content : string required;
+      author : string default "Admin";
+      published_at : string;
+    }
+
+  html-ui:
+    <div class="site-wrapper">
+      <nav class="navbar">
+        <div class="logo">UniStack DevBlog</div>
+        <div class="nav-links">
+          <a href="/">Home</a>
+          <a href="/archive">Archive</a>
+          <a href="/about">About</a>
+        </div>
+      </nav>
+
+      <header class="hero">
+        <h1>Building the Future of Full-Stack</h1>
+        <p>Exploring the power of single-file applications with UniStack.</p>
+      </header>
+
+      <main class="content-area">
+        <section class="posts-grid">
+          {py:render_latest_posts()}
+        </section>
+
+        <aside class="sidebar">
+          <h3>Categories</h3>
+          <ul>
+            <li>Transpilation</li>
+            <li>Runtime Engine</li>
+            <li>Grammar Design</li>
+          </ul>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <p>Powered by UniStack Industrial Toolchain -- No more context switching.</p>
+      </footer>
+    </div>;
+
+  css:
+    :root {
+      --primary: #8b5cf6;
+      --secondary: #ec4899;
+      --bg: #0b0f1a;
+      --surface: #161b2e;
+      --text: #f1f5f9;
+      --text-dim: #94a3b8;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .site-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid #2d3748;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 2rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 6rem 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      letter-spacing: -0.05em;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .content-area {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 4rem;
+      margin-bottom: 6rem;
+    }
+
+    .post-card {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      border: 1px solid #2d3748;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .post-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .post-card h2 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    .sidebar {
+      background: var(--surface);
+      padding: 2rem;
+      border-radius: 1rem;
+      height: fit-content;
+    }
+
+    .footer {
+      padding: 4rem 0;
+      text-align: center;
+      border-top: 1px solid #2d3748;
+      color: var(--text-dim);
+    }
+
+  py-logic:
+    import datetime
+
+    def render_latest_posts():
+      posts = sql("SELECT * FROM posts ORDER BY published_at DESC LIMIT 5")
+      if not posts:
+        # Initial seeding if empty
+        seed_data()
+        posts = sql("SELECT * FROM posts ORDER BY published_at DESC LIMIT 5")
+      
+      html = ""
+      for p in posts:
+        html += f"""
+        <article class="post-card">
+          <h2>{p['title']}</h2>
+          <div class="meta">By {p['author']} on {p['published_at']}</div>
+          <p>{p['content'][:150]}...</p>
+          <a href="/post/{p['slug']}" class="read-more">Read Full Article</a>
+        </article>
+        """
+      return html
+
+    def seed_data():
+      now = datetime.datetime.now().strftime("%Y-%m-%d")
+      sql("INSERT INTO posts (title, slug, content, published_at) VALUES (?, ?, ?, ?)", 
+          ["The Rise of UniStack", "rise-of-unistack", "UniStack is revolutionizing how we build web apps by collapsing the stack into a single unified language...", now])
+      sql("INSERT INTO posts (title, slug, content, published_at) VALUES (?, ?, ?, ?)", 
+          ["Why Single-File Apps Matter", "single-file-apps", "Complexity is the enemy of software development. By keeping everything in one place, we reduce mental overhead...", now])
+
+  routes:
+    GET /api/posts {
+      return py:render_latest_posts();
+    }
+
+    GET /post/:slug {
+      return sql("SELECT * FROM posts WHERE slug = ?", req.params.slug);
+    }
+}

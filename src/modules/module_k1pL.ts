@@ -210,7 +210,7 @@ async function testTranspilerBuild() {
   assert(serverTs.includes('runtime.sql("SELECT * FROM users WHERE id = ?", ['), 'server.ts should emit parameterized sql call');
   assert(clientTs.includes('createStateStore'), 'client.ts should include reactive state store');
   assert(serverTs.includes('validation failed: title is required'), 'server.ts should emit route validation');
-  assert(serverTs.includes('❌ UniStack: missing required env var: SECRET'), 'server.ts should emit env validation for required var');
+  assert(serverTs.includes('[Cross] UniStack: missing required env var: SECRET'), 'server.ts should emit env validation for required var');
   assert(serverTs.includes("process.env['PORT']"), 'server.ts should reference PORT env variable');
   const example = await fs.readFile(resolve(project, '.env.example'), 'utf8');
   assert(example.includes('SECRET='), '.env.example should contain SECRET placeholder');

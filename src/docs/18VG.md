@@ -68,8 +68,8 @@ npm run build
 
 **Ensure all imports include `.js` extension:**
 ```typescript
-import { foo } from './bar.js';  // ✓ Correct
-import { foo } from './bar';     // ✗ Wrong
+import { foo } from './bar.js';  // [Check] Correct
+import { foo } from './bar';     // [X Mark] Wrong
 ```
 
 ---
