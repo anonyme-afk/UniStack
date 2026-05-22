@@ -99,7 +99,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
     .main {
       flex: 1;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       overflow: hidden;
     }
 
@@ -139,6 +139,21 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
       outline: none;
       resize: none;
       tab-size: 2;
+    }
+
+    .preview-panel {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .preview-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: #fff;
     }
 
     .ast-panel {
@@ -198,8 +213,13 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
       <div class="diag-box" id="diagBox"></div>
     </div>
 
+    <div class="preview-panel">
+      <div class="panel-header">Live Preview</div>
+      <iframe id="livePreview" class="preview-iframe"></iframe>
+    </div>
+
     <div class="ast-panel">
-      <div class="panel-header">Live AST / Diagnostics</div>
+      <div class="panel-header">AST Inspector</div>
       <div class="ast-content" id="astView"></div>
     </div>
   </div>
@@ -209,6 +229,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
     const editor = document.getElementById('editor');
     const diagBox = document.getElementById('diagBox');
     const astView = document.getElementById('astView');
+    const livePreview = document.getElementById('livePreview');
 
     function update() {
       const code = editor.value;
@@ -224,7 +245,44 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
       } else {
         diagBox.innerHTML = '<span class="diag-ok">Parse OK — ' + result.sections.length + ' sections found.</span>';
         renderAst(result);
+        renderPreview(result);
       }
+    }
+
+    function renderPreview(data) {
+      let cssCode = '';
+      let htmlCode = '';
+      let jsCode = '';
+
+      for (const section of data.sections) {
+        if (section.kind === 'css') {
+          cssCode += section.chunks.join('\\n');
+        }
+        if (section.kind === 'js' || section.kind === 'js-events') {
+          jsCode += section.chunks.map(c => c.code).join('\\n');
+        }
+        if (section.kind === 'html' || section.kind === 'html-ui') {
+          for (const block of (section.blocks || [])) {
+            for (const node of (block.nodes || [])) {
+              if (node.kind === 'htmlText') htmlCode += node.text;
+              else if (node.kind === 'htmlExpr') htmlCode += '<!-- expr: ' + escapeHtml(JSON.stringify(node.target)) + ' -->';
+            }
+          }
+        }
+      }
+
+      const previewContent = \`<!DOCTYPE html>
+<html>
+<head>
+  <style>\${cssCode}</style>
+</head>
+<body>
+  \${htmlCode}
+  <script>\${jsCode}<\/script>
+</body>
+</html>\`;
+      
+      livePreview.srcdoc = previewContent;
     }
 
     function renderAst(data) {
