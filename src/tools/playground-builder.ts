@@ -278,7 +278,7 @@ const HTML_TEMPLATE = `<!DOCTYPE html>
 </head>
 <body>
   \${htmlCode}
-  <script>\${jsCode}<\/script>
+  <script>\${jsCode}<\\/script>
 </body>
 </html>\`;
       
