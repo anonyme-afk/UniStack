@@ -98,7 +98,22 @@ unistack lint --file src/app.uni
 
 # Install package from local registry
 unistack pack install my-pkg --target web
+# Generate the static Web Playground for GitHub Pages
+unistack build-playground
 ```
+
+---
+
+## UniStack Web Playground (GitHub Pages)
+
+UniStack comes with a built-in static Web Playground that you can deploy to GitHub Pages. It allows anyone to write `.uni` code and see the live AST parsing instantly in their browser!
+
+To build the playground:
+```bash
+unistack build-playground
+```
+This generates the `docs/` folder containing an `index.html` and a bundled JS parser.
+To deploy, simply push to your `main` branch and configure GitHub Pages to serve from the `docs/` folder.
 
 ---
 

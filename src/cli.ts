@@ -10,6 +10,8 @@ import type { CompilationIR, UniFile, Section, ImportsSection, RouteSection, Tes
 import { BasicRuntime, startServer, UniRuntime } from './runtime/server.js';
 import { installPackage, publishPackage } from './cli/unipack.js';
 import { formatUniFile } from './tools/formatter.js';
+import { startStudio } from './tools/studio.js';
+import { buildPlayground } from './tools/playground-builder.js';
 import { lintUniFile } from './tools/linter.js';
 import { build as esbuildBuild } from 'esbuild';
 import { fileURLToPath } from 'node:url';
@@ -475,6 +477,12 @@ async function main(): Promise<void> {
     } else if (cmd === 'templates') {
       const list = await listTemplates(cwd);
       console.log(list.join('\n'));
+    } else if (cmd === 'studio') {
+      const file = getFlagValue(args, '--file') ?? resolve(cwd, 'src', 'app.uni');
+      const port = Number(getFlagValue(args, '--port') ?? 5050);
+      await startStudio({ port, entryFile: file });
+    } else if (cmd === 'build-playground') {
+      await buildPlayground(cwd);
     } else if (cmd === 'fmt') {
       const file = getFlagValue(args, '--file') ?? resolve(cwd, 'src', 'app.uni');
       await formatUniFile({ file });

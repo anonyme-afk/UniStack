@@ -14,5 +14,13 @@
     "resolveJsonModule": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["src/tests/tmp/**/*", "src/tests/tmp-imports/**/*", "src/tests/tmp-imports-runtime/**/*"]
+  "exclude": [
+    "src/modules/**/*",
+    "src/core/**/*",
+    "src/tests/**/*",
+    "src/docs/**/*",
+    "src/stdlib/**/*",
+    "node_modules",
+    "dist"
+  ]
 }
